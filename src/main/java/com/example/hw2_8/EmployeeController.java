@@ -9,29 +9,42 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/departments")
+@RequestMapping("/employee-list")
 
 public class EmployeeController {
+    private final EmployeeService employeeService;
 
-    private final DepartmentService departmentService;
+    public EmployeeController(EmployeeService employeeService) {
+        this.employeeService = employeeService;
+    }
 
-    public EmployeeController(DepartmentService departmentService) {
-        this.departmentService = departmentService;
+    @GetMapping("/employee-list/")
+    public String welcome() {
+        return "Welcome to employee world!";
     }
-    @GetMapping("/max-salary")
-    public Employee findEmployeeWithMaxSalaryByDepartmentId(@RequestParam int departmentId){
-        return departmentService.findEmployeeWithMaxSalaryByDepartmentId(departmentId);
+
+    @GetMapping("/add")
+    public String addToEmployeeBook(@RequestParam("DepartmentId") int departmentId, @RequestParam("id") Integer id,
+                                    @RequestParam("firstName") String firstName, @RequestParam("lastName") String lastName,
+                                    @RequestParam("Salary") int salary) {
+        return employeeService.addToEmployeeBook(departmentId, id,firstName,lastName, salary)+ " successfully added";
+
     }
-    @GetMapping("/min-salary")
-    public Employee findEmployeeWithMinSalaryByDepartmentId(@RequestParam int departmentId){
-        return departmentService.findEmployeeWithMinSalaryByDepartmentId(departmentId);
+    @GetMapping("/remove")
+    public String removeFromEmployeeList(@RequestParam("id") Integer id) {
+        return "EMPLOYEE: ID "+id+" "+employeeService.removeFromEmployeeBook(id)+" removed.";
     }
-    @GetMapping(value = "/all", params = {"departmentId"})
-    public Employee findAllEmployeesInDepartment(@RequestParam int departmentId){
-        return (Employee) departmentService.findAllEmployeesInDepartment(departmentId);
+
+
+    @GetMapping("/find")
+    public String findInEmployeeList(@RequestParam("id") Integer id) {
+        return "EMPLOYEE: ID"+id+" "+employeeService.findInEmployeeBook(id);
     }
-    @GetMapping("/all")
-    public Map<Integer, List<Employee>> findAllEmployeesByDepartments(){
-        return departmentService.findAllEmployeesByDepartments();
+
+    @GetMapping("/printList")
+    public List< Employee> getEmployeeBook() {
+        return employeeService.getEmployeeBook();
+
     }
+
 }

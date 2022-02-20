@@ -3,6 +3,7 @@ package com.example.hw2_8;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -14,8 +15,8 @@ public class EmployeeServiceImpl implements EmployeeService {
         employeeBook = new HashMap<>();
     }
 
-    public Employee addToEmployeeBook(Integer id, String firstName, String lastName) {
-        Employee newEmployee = new Employee(id,firstName, lastName);
+    public Employee addToEmployeeBook(int departmentId, Integer id, String firstName, String lastName, int salary) {
+        Employee newEmployee = new Employee(departmentId,id,firstName, lastName,salary);
         if (employeeBook.containsKey(id)) {
             throw new EmployeeAlreadyExistsException("Employee with ID " + id + " already exists!");
         }
@@ -44,11 +45,11 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public Map<Integer, Employee> getEmployeeBook() {
+    public List<Employee> getEmployeeBook() {
         if (employeeBook.isEmpty()) {
             throw new EmployeeBookIsEmptyException("EMPLOYEE BOOK IS EMPTY!");
         }
-        return employeeBook;
+        return (List<Employee>) employeeBook;
     }
 
 }

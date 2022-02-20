@@ -8,34 +8,29 @@ public class Employee {
     //private final String fatherName;
     private final String lastName;
     private int department;
-    private float salaryMonth;
+    private int salaryMonth;
 
 
-    public Employee(int id, String firstName, String lastName) {
+    public Employee(int department, int id, String firstName, String lastName, int salaryMonth) {
 
         this.firstName = firstName;
-        //this.fatherName = fatherName;
         this.lastName = lastName;
         this.department = department;
         this.salaryMonth = salaryMonth;
         this.id = counter++;
     }
 
-    public float getSalaryMonth() {
+    public int getSalaryMonth() {
         return salaryMonth;
     }
 
-    public void setSalaryMonth(float salaryMonth) {
+    public void setSalaryMonth(int salaryMonth) {
         this.salaryMonth = salaryMonth;
     }
 
     public String getFirstName() {
         return this.firstName;
     }
-
-  //  public String getFatherName() {
-//        return this.fatherName;
-//    }
 
     public String getFullName() {
 
