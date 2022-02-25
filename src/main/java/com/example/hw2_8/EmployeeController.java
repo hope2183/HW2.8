@@ -27,19 +27,20 @@ public class EmployeeController {
                                     @RequestParam("lastName") String lastName,
                                     @RequestParam("department") int department,
                                     @RequestParam("salary") int salary) {
-        return employeeService.addToEmployeeBook(firstName,lastName,department,salary)+" successfully added.";
+        return employeeService.addToEmployeeBook(firstName, lastName, department, salary) + " successfully added.";
     }
+
     @GetMapping("/remove")
     public String removeFromEmployeeList(@RequestParam("firstName") String firstName,
                                          @RequestParam("lastName") String lastName) {
-        return employeeService.removeFromEmployeeBook(firstName,lastName)+" removed.";
+        return employeeService.removeFromEmployeeBook(firstName, lastName) + " removed.";
     }
 
 
     @GetMapping("/find")
     public String findInEmployeeList(@RequestParam("firstName") String firstName,
                                      @RequestParam("lastName") String lastName) {
-        return employeeService.findInEmployeeBook(firstName,lastName)+" found.";
+        return employeeService.findInEmployeeBook(firstName, lastName) + " found.";
     }
 
     @GetMapping("/printList")

@@ -11,7 +11,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 
     public Employee addToEmployeeBook(String firstName, String lastName, int department, int salary) {
-        Employee newEmployee = new Employee(firstName,lastName,department,salary);
+        Employee newEmployee = new Employee(firstName, lastName, department, salary);
         String key = firstName + lastName;
         if (employeeBook.containsKey(key)) {
             throw new EmployeeAlreadyExistsException("Employee already exists!");
@@ -40,7 +40,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public Collection <Employee> getEmployeeBook() {
+    public Collection<Employee> getEmployeeBook() {
         if (employeeBook.isEmpty()) {
             throw new EmployeeBookIsEmptyException("EMPLOYEE BOOK IS EMPTY!");
         }

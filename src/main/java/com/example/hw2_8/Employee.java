@@ -6,6 +6,7 @@ public class Employee {
     private final String lastName;
     private int department;
     private int salary;
+
     public Employee(String firstName, String lastName, int department, int salary) {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -28,7 +29,7 @@ public class Employee {
 
     public String getFullName() {
 
-        return this.lastName +" "+ firstName;
+        return this.lastName + " " + firstName;
     }
 
     public int getDepartment() {
@@ -44,7 +45,7 @@ public class Employee {
 
     @Override
     public String toString() {
-        return " СОТРУДНИК: " + firstName + " " + lastName + " "+
+        return " СОТРУДНИК: " + firstName + " " + lastName + " " +
                 " ОТДЕЛ: " + department + " ЗАРАБОТНАЯ ПЛАТА, руб.: " + salary;
     }
 

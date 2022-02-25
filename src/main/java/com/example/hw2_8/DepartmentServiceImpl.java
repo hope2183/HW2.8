@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 import static java.util.Comparator.comparingInt;
 
 @Service
-public class DepartmentServiceImpl implements DepartmentService{
+public class DepartmentServiceImpl implements DepartmentService {
     private final EmployeeService employeeService;
 
     public DepartmentServiceImpl(EmployeeService employeeService) {
