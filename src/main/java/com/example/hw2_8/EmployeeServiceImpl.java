@@ -2,54 +2,49 @@ package com.example.hw2_8;
 
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service
 
 public class EmployeeServiceImpl implements EmployeeService {
-    private Map<Integer, Employee> employeeBook;
+    private Map<String, Employee> employeeBook = new HashMap<>();
 
-    public EmployeeServiceImpl() {
-        employeeBook = new HashMap<>();
-    }
 
-    public Employee addToEmployeeBook(int departmentId, Integer id, String firstName, String lastName, int salary) {
-        Employee newEmployee = new Employee(departmentId,id,firstName, lastName,salary);
-        if (employeeBook.containsKey(id)) {
-            throw new EmployeeAlreadyExistsException("Employee with ID " + id + " already exists!");
+    public Employee addToEmployeeBook(String firstName, String lastName, int department, int salary) {
+        Employee newEmployee = new Employee(firstName,lastName,department,salary);
+        String key = firstName + lastName;
+        if (employeeBook.containsKey(key)) {
+            throw new EmployeeAlreadyExistsException("Employee already exists!");
         }
-        employeeBook.put(id, newEmployee);
+        employeeBook.put(key, newEmployee);
         return newEmployee;
     }
 
 
     @Override
-    public Employee removeFromEmployeeBook(Integer id) {
-
-        if (employeeBook.containsKey(id)) {
-            Employee deletedEmployee = employeeBook.remove(id);
-            return deletedEmployee;
+    public Employee removeFromEmployeeBook(String firstName, String lastName) {
+        String key = firstName + lastName;
+        if (!employeeBook.containsKey(key)) {
+            throw new EmployeeDoesNotExistException("Employee does not exist!");
         }
-        throw new EmployeeDoesNotExistException("Employee does not exist!");
+        return employeeBook.remove(key);
     }
 
     @Override
-    public Employee findInEmployeeBook(Integer id) {
-        if (employeeBook.containsKey(id)) {
-            Employee foundEmployee = employeeBook.get(id);
-            return foundEmployee;
+    public Employee findInEmployeeBook(String firstName, String lastName) {
+        String key = firstName + lastName;
+        if (!employeeBook.containsKey(key)) {
+            throw new EmployeeDoesNotExistException("Employee does not exist!");
         }
-        throw new EmployeeDoesNotExistException("Employee with ID: " + id + " does not exist!");
+        return employeeBook.get(key);
     }
 
     @Override
-    public List<Employee> getEmployeeBook() {
+    public Collection <Employee> getEmployeeBook() {
         if (employeeBook.isEmpty()) {
             throw new EmployeeBookIsEmptyException("EMPLOYEE BOOK IS EMPTY!");
         }
-        return (List<Employee>) employeeBook;
+        return Collections.unmodifiableCollection(employeeBook.values());
     }
 
 }

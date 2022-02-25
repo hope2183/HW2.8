@@ -1,31 +1,25 @@
 package com.example.hw2_8;
 
 public class Employee {
-    private static int counter = 1;
-    private int id;
 
     private final String firstName;
-    //private final String fatherName;
     private final String lastName;
     private int department;
-    private int salaryMonth;
-
-
-    public Employee(int department, int id, String firstName, String lastName, int salaryMonth) {
-
+    private int salary;
+    public Employee(String firstName, String lastName, int department, int salary) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.department = department;
-        this.salaryMonth = salaryMonth;
-        this.id = counter++;
+        this.salary = salary;
     }
 
-    public int getSalaryMonth() {
-        return salaryMonth;
+
+    public int getSalary() {
+        return salary;
     }
 
-    public void setSalaryMonth(int salaryMonth) {
-        this.salaryMonth = salaryMonth;
+    public void setSalary(int salary) {
+        this.salary = salary;
     }
 
     public String getFirstName() {
@@ -35,11 +29,6 @@ public class Employee {
     public String getFullName() {
 
         return this.lastName +" "+ firstName;
-    }
-
-    public String getLastName() {
-
-        return this.lastName;
     }
 
     public int getDepartment() {
@@ -52,18 +41,11 @@ public class Employee {
         this.department = department;
     }
 
-    public int getId() {
-
-        return this.id;
-    }
-
-
-
 
     @Override
     public String toString() {
-        return "ID: "+id+" СОТРУДНИК: " + lastName + " " + firstName + " "+
-                " ОТДЕЛ: " + department + " ЗАРАБОТНАЯ ПЛАТА, руб.: " + salaryMonth;
+        return " СОТРУДНИК: " + firstName + " " + lastName + " "+
+                " ОТДЕЛ: " + department + " ЗАРАБОТНАЯ ПЛАТА, руб.: " + salary;
     }
 
 }

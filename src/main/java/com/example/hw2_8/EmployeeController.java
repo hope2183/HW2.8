@@ -5,8 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
-import java.util.Map;
+import java.util.Collection;
 
 @RestController
 @RequestMapping("/employee-list")
@@ -24,25 +23,27 @@ public class EmployeeController {
     }
 
     @GetMapping("/add")
-    public String addToEmployeeBook(@RequestParam("DepartmentId") int departmentId, @RequestParam("id") Integer id,
-                                    @RequestParam("firstName") String firstName, @RequestParam("lastName") String lastName,
-                                    @RequestParam("Salary") int salary) {
-        return employeeService.addToEmployeeBook(departmentId, id,firstName,lastName, salary)+ " successfully added";
-
+    public String addToEmployeeBook(@RequestParam("firstName") String firstName,
+                                    @RequestParam("lastName") String lastName,
+                                    @RequestParam("department") int department,
+                                    @RequestParam("salary") int salary) {
+        return employeeService.addToEmployeeBook(firstName,lastName,department,salary)+" successfully added.";
     }
     @GetMapping("/remove")
-    public String removeFromEmployeeList(@RequestParam("id") Integer id) {
-        return "EMPLOYEE: ID "+id+" "+employeeService.removeFromEmployeeBook(id)+" removed.";
+    public String removeFromEmployeeList(@RequestParam("firstName") String firstName,
+                                         @RequestParam("lastName") String lastName) {
+        return employeeService.removeFromEmployeeBook(firstName,lastName)+" removed.";
     }
 
 
     @GetMapping("/find")
-    public String findInEmployeeList(@RequestParam("id") Integer id) {
-        return "EMPLOYEE: ID"+id+" "+employeeService.findInEmployeeBook(id);
+    public String findInEmployeeList(@RequestParam("firstName") String firstName,
+                                     @RequestParam("lastName") String lastName) {
+        return employeeService.findInEmployeeBook(firstName,lastName)+" found.";
     }
 
     @GetMapping("/printList")
-    public List< Employee> getEmployeeBook() {
+    public Collection<Employee> getEmployeeBook() {
         return employeeService.getEmployeeBook();
 
     }

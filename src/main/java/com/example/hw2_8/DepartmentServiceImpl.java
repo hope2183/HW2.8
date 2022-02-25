@@ -20,14 +20,14 @@ public class DepartmentServiceImpl implements DepartmentService{
     @Override
     public Employee findEmployeeWithMaxSalaryByDepartmentId(int departmentId) {
         return employeeService.getEmployeeBook().stream().filter(e -> e.getDepartment() == departmentId)
-                .max(comparingInt(e -> e.getSalaryMonth()))
+                .max(comparingInt(e -> e.getSalary()))
                 .orElseThrow(() -> new EmployeeDoesNotExistException("Employee not found!"));
     }
 
     @Override
     public Employee findEmployeeWithMinSalaryByDepartmentId(int departmentId) {
         return employeeService.getEmployeeBook().stream().filter(e -> e.getDepartment() == departmentId)
-                .min(comparingInt(e -> e.getSalaryMonth()))
+                .min(comparingInt(e -> e.getSalary()))
                 .orElseThrow(() -> new EmployeeDoesNotExistException("Employee not found!"));
     }
 

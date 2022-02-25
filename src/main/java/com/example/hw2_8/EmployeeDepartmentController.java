@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
@@ -26,9 +27,9 @@ public class EmployeeDepartmentController {
     public Employee findEmployeeWithMinSalaryByDepartmentId(@RequestParam int departmentId){
         return departmentService.findEmployeeWithMinSalaryByDepartmentId(departmentId);
     }
-    @GetMapping(value = "/all", params = {"departmentId"})
-    public Employee findAllEmployeesInDepartment(@RequestParam int departmentId){
-        return (Employee) departmentService.findAllEmployeesInDepartment(departmentId);
+    @GetMapping(value = "/all", params = {"department"})
+    public Collection<Employee> findAllEmployeesInDepartment(@RequestParam int department){
+        return departmentService.findAllEmployeesInDepartment(department);
     }
     @GetMapping("/all")
     public Map<Integer, List<Employee>> findAllEmployeesByDepartments(){
