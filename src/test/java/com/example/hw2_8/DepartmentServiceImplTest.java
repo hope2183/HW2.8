@@ -24,21 +24,21 @@ public class DepartmentServiceImplTest {
     @InjectMocks
     private DepartmentServiceImpl out;
 
-//    @Test
-//    public void findEmployeeWithMaxSalaryInDepartment(){
-//    when(employeeService.getEmployeeBook()).thenReturn(EMPLOYEES);
-//    assertEquals(MAX_SALARY_EMPLOYEE, out.findEmployeeWithMaxSalaryByDepartmentId(DEPARTMENT_ID));
-//}
+    @Test
+    public void findEmployeeWithMaxSalaryInDepartment(){
+    when(employeeService.getEmployeeBook()).thenReturn(EMPLOYEES);
+    assertEquals(MAX_SALARY_EMPLOYEE, out.findEmployeeWithMaxSalaryByDepartmentId(DEPARTMENT_ID));
+}
     @Test
     public void shouldThrowEmployeeDoesNotExistsExceptionWhenDepartmentIsEmptyForMaxSalary() {
         when(employeeService.getEmployeeBook()).thenReturn(new ArrayList<>());
         assertThrows(EmployeeDoesNotExistException.class, () -> out.findEmployeeWithMaxSalaryByDepartmentId(DEPARTMENT_ID));
     }
-//    @Test
-//    public void findEmployeeWithMinSalaryInDepartment(){
-//        when(employeeService.getEmployeeBook()).thenReturn(EMPLOYEES);
-//        assertEquals(MIN_SALARY_EMPLOYEE, out.findEmployeeWithMinSalaryByDepartmentId(DEPARTMENT_ID));
-//    }
+    @Test
+    public void findEmployeeWithMinSalaryInDepartment(){
+        when(employeeService.getEmployeeBook()).thenReturn(EMPLOYEES);
+        assertEquals(MIN_SALARY_EMPLOYEE, out.findEmployeeWithMinSalaryByDepartmentId(DEPARTMENT_ID));
+    }
     @Test
     public void shouldThrowEmployeeDoesNotExistsExceptionWhenNoMinSalary() {
         when(employeeService.getEmployeeBook()).thenReturn(new ArrayList<>());
@@ -59,10 +59,10 @@ public class DepartmentServiceImplTest {
         when(employeeService.getEmployeeBook()).thenReturn(EMPLOYEES);
         assertEquals(new ArrayList<>(), out.findAllEmployeesInDepartment(DEPARTMENT_ID2));
     }
-//    @Test
-//    public void shouldReturnEmployeesByDepartmentWhenExists(){
-//        when(employeeService.getEmployeeBook()).thenReturn(DIFFERENT_DEPARTMENTS_EMPLOYEES);
-//        assertEquals(List.of(MAX_SALARY_EMPLOYEE), out.findAllEmployeesInDepartment(DEPARTMENT_ID));
-//        assertEquals(List.of(OTHER_DEPARTMENT_EMPLOYEE), out.findAllEmployeesInDepartment(DEPARTMENT_ID2)) ;
-//    }
+    @Test
+    public void shouldReturnEmployeesByDepartmentWhenExists(){
+        when(employeeService.getEmployeeBook()).thenReturn(DIFFERENT_DEPARTMENTS_EMPLOYEES);
+        assertEquals(List.of(MAX_SALARY_EMPLOYEE), out.findAllEmployeesInDepartment(DEPARTMENT_ID));
+        assertEquals(List.of(OTHER_DEPARTMENT_EMPLOYEE), out.findAllEmployeesInDepartment(DEPARTMENT_ID2)) ;
+    }
 }

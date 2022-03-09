@@ -70,11 +70,13 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 
     public Employee addToEmployeeBook(String firstName, String lastName) {
-        validateNames(firstName, lastName);
-        String correctFirstName = capitalize(firstName.toLowerCase());
-        String correctLastName = capitalize(lastName.toLowerCase());
-        Employee newEmployee = new Employee(correctFirstName, correctLastName);
-        String key = correctFirstName + correctLastName;
+//        validateNames(firstName, lastName);
+//        String correctFirstName = capitalize(firstName.toLowerCase());
+//        String correctLastName = capitalize(lastName.toLowerCase());
+//        Employee newEmployee = new Employee(correctFirstName, correctLastName);
+//        String key = correctFirstName + correctLastName;
+        Employee newEmployee = new Employee(firstName,lastName);
+        String key = firstName+lastName;
         if (employeeBook.containsKey(key)) {
             throw new EmployeeAlreadyExistsException("Employee already exists!");
         }
