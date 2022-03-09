@@ -63,6 +63,6 @@ public class DepartmentServiceImplTest {
 //    public void shouldReturnEmployeesByDepartmentWhenExists(){
 //        when(employeeService.getEmployeeBook()).thenReturn(DIFFERENT_DEPARTMENTS_EMPLOYEES);
 //        assertEquals(List.of(MAX_SALARY_EMPLOYEE), out.findAllEmployeesInDepartment(DEPARTMENT_ID));
-//        assertEquals(List.of(OTHER_DEPARTMENT_EMPLOYEE), out.findAllEmployeesInDepartment(DEPARTMENT_ID2));
+//        assertEquals(List.of(OTHER_DEPARTMENT_EMPLOYEE), out.findAllEmployeesInDepartment(DEPARTMENT_ID2)) ;
 //    }
 }

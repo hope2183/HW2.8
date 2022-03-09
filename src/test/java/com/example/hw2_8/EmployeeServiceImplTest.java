@@ -96,7 +96,7 @@ public class EmployeeServiceImplTest {
     @Test
     public void shouldThrowEmployeeBookIsEmptyExceptionWhenBookIsEmpty(){
         assertTrue(out.getEmployeeBook().isEmpty());
-      //  assertThrows(EmployeeBookIsEmptyException.class,() -> out.getEmployeeBook());
+//        assertThrows(EmployeeBookIsEmptyException.class,() -> out.getEmployeeBook());
     }
 
 }
