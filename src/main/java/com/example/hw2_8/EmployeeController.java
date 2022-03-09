@@ -22,12 +22,18 @@ public class EmployeeController {
         return "Welcome to employee world!";
     }
 
-    @GetMapping("/add")
+//    @GetMapping("/add")
+//    public String addToEmployeeBook(@RequestParam("firstName") String firstName,
+//                                    @RequestParam("lastName") String lastName,
+//                                    @RequestParam("department") int department,
+//                                    @RequestParam("salary") int salary) {
+//        return employeeService.addToEmployeeBook(firstName, lastName, department, salary) + " successfully added.";
+//    }
+@GetMapping("/add")
     public String addToEmployeeBook(@RequestParam("firstName") String firstName,
-                                    @RequestParam("lastName") String lastName,
-                                    @RequestParam("department") int department,
-                                    @RequestParam("salary") int salary) {
-        return employeeService.addToEmployeeBook(firstName, lastName, department, salary) + " successfully added.";
+                                    @RequestParam("lastName") String lastName)
+{
+        return employeeService.addToEmployeeBook(firstName, lastName) + " successfully added.";
     }
 
     @GetMapping("/remove")

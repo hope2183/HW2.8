@@ -5,7 +5,8 @@ import java.util.List;
 
 public interface EmployeeService {
 
-    Employee addToEmployeeBook(String firstName, String lastName, int department, int salary);
+    Employee addToEmployeeBook(String firstName, String lastName);
+    Employee addToEmployeeBook(String firstName, String lastName, int salary, int department);
 
     Employee removeFromEmployeeBook(String firstName, String lastName);
 

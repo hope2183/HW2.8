@@ -62,10 +62,23 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public Collection<Employee> getEmployeeBook() {
-        if (employeeBook.isEmpty()) {
-            throw new EmployeeBookIsEmptyException("EMPLOYEE BOOK IS EMPTY!");
-        }
+//        if (employeeBook.isEmpty()) {
+//            throw new EmployeeBookIsEmptyException("EMPLOYEE BOOK IS EMPTY!");
+//        }
         return Collections.unmodifiableCollection(employeeBook.values());
     }
 
+
+    public Employee addToEmployeeBook(String firstName, String lastName) {
+        validateNames(firstName, lastName);
+        String correctFirstName = capitalize(firstName.toLowerCase());
+        String correctLastName = capitalize(lastName.toLowerCase());
+        Employee newEmployee = new Employee(correctFirstName, correctLastName);
+        String key = correctFirstName + correctLastName;
+        if (employeeBook.containsKey(key)) {
+            throw new EmployeeAlreadyExistsException("Employee already exists!");
+        }
+        employeeBook.put(key, newEmployee);
+        return newEmployee;
+    }
 }

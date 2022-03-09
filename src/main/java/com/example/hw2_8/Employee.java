@@ -14,6 +14,13 @@ public class Employee {
         this.salary = salary;
     }
 
+    public Employee(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
+
+
 
     public int getSalary() {
         return salary;
@@ -43,10 +50,10 @@ public class Employee {
     }
 
 
-    @Override
-    public String toString() {
-        return " СОТРУДНИК: " + firstName + " " + lastName + " " +
-                " ОТДЕЛ: " + department + " ЗАРАБОТНАЯ ПЛАТА, руб.: " + salary;
-    }
+//    @Override
+//    public String toString() {
+//        return " СОТРУДНИК: " + firstName + " " + lastName + " " +
+//                " ОТДЕЛ: " + department + " ЗАРАБОТНАЯ ПЛАТА, руб.: " + salary;
+//    }
 
 }
