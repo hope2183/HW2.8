@@ -11,11 +11,11 @@ public class EmployeeTestConstants {
     public static final String FIRST_NAME = "Ivan";
     public static final String FIRST_NAME2 = "Ivashka";
     public static final String FIRST_NAME3 = "Ivashechka";
-    public static final String WRONG_FIRST_NAME = "Ivanych";
+    public static final String WRONG_FIRST_NAME = "!vanych";
     public static final String LAST_NAME = "Ivanov";
     public static final String LAST_NAME2 = "Ivanovyh";
     public static final String LAST_NAME3 = "Ivanovushka";
-    public static final String WRONG_LAST_NAME = "Ivanova";
+    public static final String WRONG_LAST_NAME = "Ivan06va";
 
     public static final int MAX_SALARY = 77777;
     public static final int MIN_SALARY = 11111;

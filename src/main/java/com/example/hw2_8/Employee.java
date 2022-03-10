@@ -1,5 +1,7 @@
 package com.example.hw2_8;
 
+import java.util.Objects;
+
 public class Employee {
 
     private final String firstName;
@@ -19,8 +21,18 @@ public class Employee {
         this.lastName = lastName;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Employee employee = (Employee) o;
+        return department == employee.department && salary == employee.salary && firstName.equals(employee.firstName) && lastName.equals(employee.lastName);
+    }
 
-
+    @Override
+    public int hashCode() {
+        return Objects.hash(firstName, lastName, department, salary);
+    }
 
     public int getSalary() {
         return salary;
@@ -48,6 +60,8 @@ public class Employee {
 
         this.department = department;
     }
+
+
 
 
 //    @Override
